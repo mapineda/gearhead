@@ -12,20 +12,21 @@ mongoose.connect('mongodb://jortron:password@ds041144.mongolab.com:41144/gearhea
 
 var express = require('express'); // call express
 
-var app = express(); // define app using express
+var morgan = require('morgan');
 
-var Instrument = require('./app/models/instrument');
+var app = express(); // define app using express
 
 var bodyParser = require('body-parser');
 
 // configure app to use bodyParser()
 
 // this will let us get the data from a POST
-
+app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080; // set our port
+var Instrument = require('./app/models/instrument');
 
 // ROUTES FOR API 
 
@@ -37,8 +38,8 @@ router.use(function(req, res, next) {
 	//do logging
 	console.log('Something is happening.');
 	next(); // make sure we go to the next routes and don't stop there
-
 });
+
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
 	res.json({ message: 'Welcome to Gig-Tracker!' });
@@ -54,17 +55,20 @@ router.route('/instruments')
 	.post(function(req, res) {
 
 		var instrument = new Instrument();  // create a new instance of the instrument model
-		instrument.name = req.body.name; //set the instrument name (comes from the request)
-
-		// save the bear and check for errors
+		// console.log('idk my bff jill');
+		// instrument.type = req.body.type;
+		instrument.model = req.body.model; //set the instrument name (comes from the request)
+		console.log(instrument);
+		// save the instrument and check for errors
 		instrument.save(function(err) {
-			if (err)
+			console.log('instrument saved');
+			if (err) {
 				res.send(err);
-
+			}
 			res.json({ message: 'Instrument created!' });
 		});
-	});
 
+	});
 //REGISTER OUR ROUTES - - - - - - - - - - - - - - - -
 //All of our routes will be prefixed with /api
 app.use('/api', router);
