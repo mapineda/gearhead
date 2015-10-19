@@ -2,7 +2,11 @@
 
 // BASE SETUP
 
-// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+
+//CONNECT TO DATABASE
+var mongoose = require('mongoose');
+mongoose.connect(); //connect to our database
 
 // Call the packages we need
 
