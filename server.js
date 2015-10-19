@@ -46,6 +46,25 @@ router.get('/', function(req, res) {
 
 // more routes for our API will happen here
 
+// on routes that end in /instruments
+// - - - - - - - - - - - - - - - - - - - - - - - - - -
+router.route('/instruments')
+
+	// create a bear (accessed at POST http://localhost:8080/api/instruments)
+	.post(function(req, res) {
+
+		var instrument = new Instrument();  // create a new instance of the Bear model
+		bear.name = req.body.name; //set the bears name (comes from the request)
+
+		// save the bear and check for errors
+		bear.save(function(err) {
+			if (err)
+				res.send(err);
+
+			res.json({ message: 'Instrument created!' });
+		});
+	});
+
 //REGISTER OUR ROUTES - - - - - - - - - - - - - - - -
 //All of our routs will be prefixed with /api
 app.use('/api', router);
