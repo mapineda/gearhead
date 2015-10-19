@@ -6,7 +6,7 @@
 
 //CONNECT TO DATABASE
 var mongoose = require('mongoose');
-mongoose.connect(); //connect to our database
+mongoose.connect('mongodb://jortron:p@ssw0rd@ds041144.mongolab.com:41144/gearheads'); //connect to our database
 
 // Call the packages we need
 
