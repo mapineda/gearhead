@@ -6,7 +6,7 @@
 
 //CONNECT TO DATABASE
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://jortron:p@ssw0rd@ds041144.mongolab.com:41144/gearheads'); //connect to our database
+mongoose.connect('mongodb://jortron:password@ds041144.mongolab.com:41144/gearheads'); //connect to our database
 
 // Call the packages we need
 
@@ -48,16 +48,16 @@ router.get('/', function(req, res) {
 
 // on routes that end in /instruments
 // - - - - - - - - - - - - - - - - - - - - - - - - - -
-router.route('/instruments')
+router.route('/instrument')
 
-	// create a bear (accessed at POST http://localhost:8080/api/instruments)
+	// create a bear (accessed at POST http://localhost:8080/api/instrument)
 	.post(function(req, res) {
 
-		var instrument = new Instrument();  // create a new instance of the Bear model
-		bear.name = req.body.name; //set the bears name (comes from the request)
+		var instrument = new Instrument();  // create a new instance of the instrument model
+		instrument.name = req.body.name; //set the instrument name (comes from the request)
 
 		// save the bear and check for errors
-		bear.save(function(err) {
+		instrument.save(function(err) {
 			if (err)
 				res.send(err);
 
