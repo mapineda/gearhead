@@ -14,7 +14,7 @@ var express = require('express'); // call express
 
 var app = express(); // define app using express
 
-var Instrument = require('./app/models/app');
+var Instrument = require('./app/models/instrument');
 
 var bodyParser = require('body-parser');
 
@@ -29,7 +29,7 @@ var port = process.env.PORT || 8080; // set our port
 
 // ROUTES FOR API 
 
-//  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+//  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 var router = express.Router(); // get an instance of the express router
 
 //middleware to use for all requests
@@ -48,7 +48,7 @@ router.get('/', function(req, res) {
 
 // on routes that end in /instruments
 // - - - - - - - - - - - - - - - - - - - - - - - - - -
-router.route('/instrument')
+router.route('/instruments')
 
 	// create a bear (accessed at POST http://localhost:8080/api/instrument)
 	.post(function(req, res) {
@@ -66,7 +66,7 @@ router.route('/instrument')
 	});
 
 //REGISTER OUR ROUTES - - - - - - - - - - - - - - - -
-//All of our routs will be prefixed with /api
+//All of our routes will be prefixed with /api
 app.use('/api', router);
 
 //START THE SERVER
