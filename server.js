@@ -14,6 +14,8 @@ var express = require('express'); // call express
 
 var app = express(); // define app using express
 
+var Instrument = require('./app/models/app');
+
 var bodyParser = require('body-parser');
 
 // configure app to use bodyParser()
@@ -30,6 +32,13 @@ var port = process.env.PORT || 8080; // set our port
 //  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
 var router = express.Router(); // get an instance of the express router
 
+//middleware to use for all requests
+router.use(function(req, res, next) {
+	//do logging
+	console.log('Something is happening.');
+	next(); // make sure we go to the next routes and don't stop there
+
+});
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
 	res.json({ message: 'Welcome to Gig-Tracker!' });
@@ -42,6 +51,6 @@ router.get('/', function(req, res) {
 app.use('/api', router);
 
 //START THE SERVER
-// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 app.listen(port);
 console.log('Magic happens on the port ' + port); 
