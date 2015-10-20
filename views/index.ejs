@@ -4,6 +4,7 @@
     <title> Gear Tracker </title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   </head>
   <body>
     <h1> test </h1>
@@ -14,26 +15,37 @@
     	<a href="/register"> Register</a>
     <% } %>
 
-    <% if (user) { %>
-    	<p>You are currently logged in as <%= user.username %></p>
-    	<a href='/pong'>Testing</a>
-    	<a href="/logout">Logout</a>
+	<div class="col-md-6">
+    	<% if (user) { %>
+    		<p>You are currently logged in as <%= user.username %></p>
+    		<a href='/pong'>Testing</a>
+    		<a href="/logout">Logout</a>
 
-		<% instruments.forEach( function( instrument ) { %>
-    		<h3><%= instrument.type %> | <%= instrument.model %> | <button>add to user list</button></h3>
-    	<% }); %>
+			<% instruments.forEach( function( instrument ) { %>
+    			<h6><%= instrument.type %> | <%= instrument.model %> | <button class="add">add to user list</button></h6>
+    		<% }); %>
 
-    <% } %>
+    	<% } %>
+    </div>
 
+    <div class="col-md-6">
+		<h4>My personal list</h4>
+		<ul id="my-list">
+		</ul>
+		<button class="btn-large btn-success">Submit List</button>
+    </div>
 
-
-
-
-
-
-
-
+ 
    <script src='http://code.jquery.com/jquery.js'></script>
    <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
+
+   <script>
+   $(function() {
+		$(document).on('click', '.add', function() {
+        	$(this).parent().appendTo("#my-list");
+    	}); // end of remove button function
+    });
+   </script>
+
   </body>
 </html>
