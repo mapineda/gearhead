@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title> Gear Tracker </title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1> test </h1>
+    <p>Welcome to Gear Tracker!</p>
+
+    <% if (!user) { %>
+    	<a href="/login"> Login</a>
+    	<a href="/register"> Register</a>
+    <% } %>
+
+
+
+    <% if (user) { %>
+    	<p>You are currently logged in as <%= user.username %></p>
+    	<a href="/logout">Logout</a>
+    <% } %>
+
+
+   <script src='http://code.jquery.com/jquery.js'></script>
+   <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
   </body>
 </html>
