@@ -9,28 +9,17 @@
     <h1> test </h1>
     <p>Welcome to Gear Tracker!</p>
 
+
     <% if (!user) { %>
-    	<a href="/login"> Login</a>
-    	<a href="/register"> Register</a>
+    	<h1>hahahaha you are not a user yet
     <% } %>
+
+
 
     <% if (user) { %>
-    	<p>You are currently logged in as <%= user.username %></p>
-    	<a href='/pong'>Testing</a>
-    	<a href="/logout">Logout</a>
-
-		<% instruments.forEach( function( instrument ) { %>
-    		<h3><%= instrument.type %> | <%= instrument.model %> | <button>add to user list</button></h3>
-    	<% }); %>
+    	<p>You are successfuly who you say you are <%= user.username %></p>
 
     <% } %>
-
-
-
-
-
-
-
 
 
    <script src='http://code.jquery.com/jquery.js'></script>
