@@ -10,6 +10,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var instruments = require('./routes/instruments');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/instruments', instruments);
 
 // passport config
 var Account = require('./app/models/account');
@@ -42,7 +44,7 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 // mongoose connection for database (replace with MONGO_CONNECT once working)
-mongoose.connect('mongodb://jortron:qazwsxedc@ds041144.mongolab.com:41144/gearheads'); //connect to our database
+mongoose.connect(process.env.MONGO_DB_CONN_GEARHEAD); //connect to our database
 
 
 // catch 404 and forward to error handler
