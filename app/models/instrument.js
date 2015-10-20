@@ -2,9 +2,9 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var InstrumentSchema = new Schema({
-	model: String,
-	type: String
+var instrumentSchema = new Schema({
+	// model: String,
+	//type: String
 });
 
-module.exports = mongoose.model('Instrument', InstrumentSchema);
+module.exports = mongoose.model('Instrument', instrumentSchema);
