@@ -6,7 +6,6 @@ var Instrument = require('../app/models/instrument');
 var router = express.Router();
 
 
-
 router.get('/', function (req, res) {
 
     var instrument = function(){
@@ -24,9 +23,11 @@ router.get('/', function (req, res) {
     instrument();
 });
 
+
 router.get('/register', function (req, res) {
     res.render('register', { });
 });
+
 
 router.post('/register', function (req, res) {
     Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
@@ -54,10 +55,28 @@ router.get('/logout', function (req, res) {
 });
 
 
+router.get('/usercreationlist', function(req, res) {
+	res.render('userlist');
+})
+
 // create a route for post ajax 
 router.post('/usercreationlist', function(req, res) {
-	res.render('userlist', { user: req.user });
-})
+	console.log(req.body.userlist);
+	var userlist = req.body.userlist;
+
+	var insertDocument = function(db, callback) {
+		db.collection('accounts').insertOne( {
+			userlist : userlist
+    	})
+	}
+
+	MongoClient.connect(url, function(err, db) {
+	  assert.equal(null, err);
+	  insertDocument(db, function() {
+	      db.close();
+	  });
+	});
+});
 
 
 module.exports = router;
