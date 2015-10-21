@@ -2,9 +2,10 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif,;
   background-image: url("/images/background.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
   background-attachment: fixed;
   margin-top: 70px;
-
+  width: 100%;
 }
 
 p{
