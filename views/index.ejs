@@ -31,9 +31,8 @@
     		<a href="/logout">Logout</a>
 
 			<% instruments.forEach( function( instrument ) { %>
-    			<h6 class="globalList"><%= instrument.type %>  <%= instrument.model %> <button class="add">add to user list</button></h6>
+    			<h6 class="globalList"><%= instrument.type %> <%= instrument.model %> <button class="add">add to user list</button></h6>
     		<% }); %>
-
     	<% } %>
     </div>
 
@@ -42,6 +41,8 @@
 		<ul id="my-list">
 		</ul>
 		<button class="finalize">Submit List</button>
+		<br>
+		<span class="show_array"></span>
     </div>
 
    <script src='http://code.jquery.com/jquery.js'></script>
@@ -52,24 +53,40 @@
 			$(document).on('click', '.add', function() {
 				$(this).parent().removeClass("globalList").addClass("personalList");
 	        	$(this).parent().appendTo("#my-list");
+	        	$(this).remove();
 	    	});
 	    });
    </script>
 
-   <script>
-
+	<script>
 		$(function() {
 			$('.finalize').on('click', function() {
-   		//declare an array
-		var my_array = new Array();
+   				//declare an array
+				var myGearList = new Array();
 
-			$('.personalList').each(function(){
-	   			my_array.push($(this).text());
-	   			console.log(my_array);
-	   		});
+				$('.personalList').each(function(){
+					var splititup =  
+		   			myGearList.push($(this).text());
+		   		});
+
+		   		$.ajax({
+				  type: 'POST',
+				  url: "/usercreationlist",
+				  data: myGearList,
+				  success: function(i){
+				  	console.log(myGearList);
+				  	$('#i').html(i);
+				  }
+				});
+
+
+
+		   		for (var i = 0; i < myGearList.length; i++) {
+    				$(".show_array").append('<span>' + myGearList[i] + ', ' + '</span>');
+				};
 			});
 		});
-   </script> 
+	</script> 
 
   </body>
 </html>
