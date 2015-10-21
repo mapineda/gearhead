@@ -16,22 +16,18 @@
     <p>You can monitor the date/time your gear is checked into the venue location and when it is loaded back on the truck. </p>
     <p>You can also note the condition of the equipment at any time.</p>	
 
-    <% if (!user) { %>
-    	<a href="/login"> Login</a>
-    	<a href="/register"> Register</a>
-    <% } %>
+   
 
 	<div class="col-md-6">
     	<% if (user) { %>
     		<p>You are currently logged in as <%= user.username %></p>
-    		<a href='/pong'>Testing</a>
-    		<a href="/logout">Logout</a>
+    		
 
 			<% instruments.forEach( function( instrument ) { %>
     			<h6 class="globalList"><%= instrument.type %>  <%= instrument.model %> <button class="add">add to user list</button></h6>
     		<% }); %>
 
-    	<% } %>
+    	
     </div>
 
     <div class="col-md-6">
@@ -39,7 +35,9 @@
 		<ul id="my-list">
 		</ul>
 		<button class="finalize">Submit List</button>
+    <% } %>
     </div>
+
 
    <script src='http://code.jquery.com/jquery.js'></script>
    <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>

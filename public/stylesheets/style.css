@@ -7,6 +7,14 @@ body {
 
 }
 
+h1 {
+	color: #42b8dd;
+}
+
+ul {
+	list-style-type: square;
+}
+
 p{
 	color:white;
 }
@@ -19,6 +27,21 @@ a {
   color: #00B7FF;
 }
 
+.logout {
+   background: rgb(66, 184, 221);
+
+}
+
+#logreg {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+
+}
+
+form {
+	display: inline;
+}
 #my-list button {
 	display: none;
 }
