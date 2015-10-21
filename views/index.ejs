@@ -8,18 +8,20 @@
     <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   </head>
-    <header>
+  <header>
         <% include ../views/partials/header %>
     </header>
   <body>
-    <h1> test </h1>
-    <p>Welcome to Gear Tracker - a mobile/tablet/laptop-friendly app that will track all your gear for every gig.</p>
+    <h1> Welcome to Gear Tracker </h1>
+    <p>A mobile/tablet/laptop-friendly app that will track all your gear for every gig.</p>
     <ul>
     	<li>Create an account.</li>
     	<li>Create a gear list.</li>
     	<li>Add you tour dates and venue details.</li>
     </ul><br>
-    <p>We create a fully responsive inventory tracking app. You can monitor the date/time your gear is checked into the venue location and when it is loaded back on the truck. You can also note the condition of the equipment at any time.</p>	
+    <p>We created a fully responsive inventory tracking app. </p>
+    <p>You can monitor the date/time your gear is checked into the venue location and when it is loaded back on the truck. </p>
+    <p>You can also note the condition of the equipment at any time.</p>	
 
     <% if (!user) { %>
     	<a href="/login"> Login</a>
@@ -35,62 +37,97 @@
         </ul> 
         <h5>INVENTORY LIST</h5>
 			<% instruments.forEach( function( instrument ) { %>
-    			<h6><%= instrument.type %> | <%= instrument.model %> | <button class="add">add to user list</button></h6>
+    			<h6 class="globalList"><%= instrument.type %> <%= instrument.model %> <button class="add">add to user list</button></h6>
     		<% }); %>
-
     	<% } %>
     </div>
 
     <div class="col-md-6">
-		  <h4>My personal list</h4>
-    <!--   ADD MY LIST TO TABLE -->
-      <table class="table table-hover table-hover">
+		 <!--  <ul id="my-list">
+		  </ul>
+		  <button class="finalize">Submit List</button> -->
+         <!--   ADD MY LIST TO TABLE -->
+       <table class="table table-hover table-bordered">
     <thead class="thead-inverse">
-      <tr>
-        <th>#</th>
-        <th>Type</th>
-        <th>Model</th>
-        <th>Issues</th>
-      </tr>
+          <tr>
+            <th>#</th>
+            <th>Type</th>
+            <th>Model</th>
+            <th>Issues</th>
+          </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td id="my-list"></td>
-        <td></td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td></td>
-        <td></td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+          <tr>
+            <th scope="row">1</th>
+            <td id="my-list"></td>
+            <td></td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td></td>
+            <td></td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
     </tbody>
-  </table>
-  		<!-- <ul id="my-list">
+  </table> 
 
-  		</ul> -->
-  		<button class="btn-large btn-success">Submit List</button>
+ <button class="finalize">Submit List</button>
+    <br>
+    <span class="show_array"></span>
+
     </div>
 
- 
+
+
    <script src='http://code.jquery.com/jquery.js'></script>
    <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
 
    <script>
-   $(function() {
-		$(document).on('click', '.add', function() {
-        	$(this).parent().appendTo("#my-list");
-    	}); // end of remove button function
-    });
+	   $(function() {
+			$(document).on('click', '.add', function() {
+				$(this).parent().removeClass("globalList").addClass("personalList");
+	        	$(this).parent().appendTo("#my-list");
+	        	$(this).remove();
+	    	});
+	    });
    </script>
+
+	<script>
+		$(function() {
+			$('.finalize').on('click', function() {
+   				//declare an array
+				var myGearList = new Array();
+
+				$('.personalList').each(function(){
+					var splititup =  
+		   			myGearList.push($(this).text());
+		   		});
+
+		   		$.ajax({
+				  type: 'POST',
+				  url: "/usercreationlist",
+				  data: myGearList,
+				  success: function(i){
+				  	console.log(myGearList);
+				  	$('#i').html(i);
+				  }
+				});
+
+
+
+		   		for (var i = 0; i < myGearList.length; i++) {
+    				$(".show_array").append('<span>' + myGearList[i] + ', ' + '</span>');
+				};
+			});
+		});
+	</script> 
 
   </body>
 </html>
