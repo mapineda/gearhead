@@ -61,7 +61,7 @@ router.get('/usercreationlist', function(req, res) {
 
 // create a route for post ajax 
 router.post('/usercreationlist', function(req, res) {
-	console.log(req.body.userlist);
+	console.log(req.body);
 	var userlist = req.body.userlist;
 
 	var insertDocument = function(db, callback) {
