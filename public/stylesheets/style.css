@@ -2,9 +2,10 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif,;
   background-image: url("/images/background.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
   background-attachment: fixed;
   margin-top: 70px;
-
+  width: 100%;
 }
 
 h1 {
@@ -21,12 +22,13 @@ p{
 
 ul {
 	color:white;
-}
+
 
 a {
   color: #00B7FF;
 }
 
+<<<<<<< HEAD
 .logout {
    background: rgb(66, 184, 221);
 
@@ -45,12 +47,17 @@ form {
 #my-list button {
 	display: none;
 }
+=======
+
+>>>>>>> 147dd2c9ce6af6a024abf357976c594fe4ccb0ac
 
 #nav {
      width: 100%;
-     position: fixed;
+     position: absolute;
+     margin-bottom: 70px;
      top: 0;  
      }
+
 
 .add {
 	font-size: 70%;

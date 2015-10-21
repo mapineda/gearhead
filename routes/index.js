@@ -54,4 +54,10 @@ router.get('/logout', function (req, res) {
 });
 
 
+// create a route for post ajax 
+router.post('/usercreationlist', function(req, res) {
+	res.render('userlist', { user: req.user });
+})
+
+
 module.exports = router;
