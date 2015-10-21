@@ -1,12 +1,24 @@
 body {
-  /*padding: 50px;*/
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif,;
+  background-image: url("/images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   margin-top: 70px;
+
 }
+
+p{
+	color:white;
+}
+
+ul {
+	color:white;
+
 
 a {
   color: #00B7FF;
 }
+
 
 
 #nav {
@@ -16,3 +28,10 @@ a {
      top: 0;  
      }
 
+
+.add {
+	font-size: 70%;
+	color: white;
+	border-radius: 4px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}

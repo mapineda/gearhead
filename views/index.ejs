@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title> Gear Tracker </title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  </head>
+  
     <header>
         <% include ../views/partials/header %>
     </header>
   <body>
-    <h1> test </h1>
-    <p>Welcome to Gear Tracker - a mobile/tablet/laptop-friendly app that will track all your gear for every gig.</p>
+    <h1> Welcome to Gear Tracker </h1>
+    <p>A mobile/tablet/laptop-friendly app that will track all your gear for every gig.</p>
     <ul>
     	<li>Create an account.</li>
     	<li>Create a gear list.</li>
     	<li>Add you tour dates and venue details.</li>
     </ul><br>
-    <p>We create a fully responsive inventory tracking app. You can monitor the date/time your gear is checked into the venue location and when it is loaded back on the truck. You can also note the condition of the equipment at any time.</p>	
+    <p>We created a fully responsive inventory tracking app. </p>
+    <p>You can monitor the date/time your gear is checked into the venue location and when it is loaded back on the truck. </p>
+    <p>You can also note the condition of the equipment at any time.</p>	
 
     <% if (!user) { %>
     	<a href="/login"> Login</a>
