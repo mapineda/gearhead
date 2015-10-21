@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,6 +7,14 @@ a {
   color: #00B7FF;
 }
 
+<<<<<<< HEAD
 #my-list button {
 	display: none;
 }
+=======
+#nav {
+     width: 100%;
+     position: absolute;
+     top: 0;  
+     }
+>>>>>>> header_logo
