@@ -27,11 +27,11 @@ footer {
 <a href="#" class="pull-left"><img src="images/logo_small.gif" class="logo"></a>
 <% if (!user) { %>
 	<div id="logreg">
-		<form action="/login">
-		    <input type="submit" value="Log In" class="logout">
-		</form>
 		<form action="/register">
 		    <input type="submit" value="Register" class="logout">
+		</form>
+		<form action="/login">
+		    <input type="submit" value="Log In" class="logout">
 		</form>
 	</div>
 <% } %>

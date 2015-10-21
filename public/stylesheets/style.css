@@ -44,6 +44,16 @@ form {
 	display: none;
 }
 
+.page_copy {
+    text-align: center;
+	vertical-align: middle;
+}
+
+.list {
+	display: inline-block;
+	margin-left: 450px;
+}
+
 #nav {
      width: 100%;
      position: absolute;
