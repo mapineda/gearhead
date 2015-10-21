@@ -1,11 +1,9 @@
-STYLE CSS
-
 body {
-  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif,;
   background-image: url("/images/background.jpg");
   background-repeat: no-repeat;
-    background-attachment: fixed;
+  background-attachment: fixed;
+  margin-top: 70px;
 
 }
 
