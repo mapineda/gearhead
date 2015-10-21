@@ -31,7 +31,7 @@
     		<a href="/logout">Logout</a>
 
 			<% instruments.forEach( function( instrument ) { %>
-    			<h6><%= instrument.type %> | <%= instrument.model %> | <button class="add">add to user list</button></h6>
+    			<h6 class="globalList"><%= instrument.type %>  <%= instrument.model %> <button class="add">add to user list</button></h6>
     		<% }); %>
 
     	<% } %>
@@ -41,20 +41,35 @@
 		<h4>My personal list</h4>
 		<ul id="my-list">
 		</ul>
-		<button class="btn-large btn-success">Submit List</button>
+		<button class="finalize">Submit List</button>
     </div>
 
- 
    <script src='http://code.jquery.com/jquery.js'></script>
    <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
 
    <script>
-   $(function() {
-		$(document).on('click', '.add', function() {
-        	$(this).parent().appendTo("#my-list");
-    	}); // end of remove button function
-    });
+	   $(function() {
+			$(document).on('click', '.add', function() {
+				$(this).parent().removeClass("globalList").addClass("personalList");
+	        	$(this).parent().appendTo("#my-list");
+	    	});
+	    });
    </script>
+
+   <script>
+
+		$(function() {
+			$('.finalize').on('click', function() {
+   		//declare an array
+		var my_array = new Array();
+
+			$('.personalList').each(function(){
+	   			my_array.push($(this).text());
+	   			console.log(my_array);
+	   		});
+			});
+		});
+   </script> 
 
   </body>
 </html>
