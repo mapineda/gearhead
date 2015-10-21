@@ -25,5 +25,24 @@ footer {
 </head>
 <div class="navbar navbar-inverse navbar-static-top" id="nav">
 <a href="#" class="pull-left"><img src="images/logo_small.gif" class="logo"></a>
+<% if (!user) { %>
+	<div id="logreg">
+		<form action="/login">
+		    <input type="submit" value="Log In" class="logout">
+		</form>
+		<form action="/register">
+		    <input type="submit" value="Register" class="logout">
+		</form>
+	</div>
+<% } %>
+
+<% if (user) { %>
+	<div id="logreg">
+		<form action="/logout">
+		    <input type="submit" value="Log Out" class="logout">
+		</form>
+	</div>
+<% } %>	
+
 <body>
 <div id="main">
