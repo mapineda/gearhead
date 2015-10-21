@@ -12,6 +12,14 @@ h1 {
 	color: #42b8dd;
 }
 
+h3 {
+	color: #009241 ;
+}
+
+h4 {
+	color: #f6c401;
+}
+
 ul {
 	list-style-type: square;
 	color:white;
@@ -28,6 +36,10 @@ a {
 .logout {
    background: rgb(66, 184, 221);
 
+}
+
+.body_div {
+	padding: 50px;
 }
 
 #logreg {
@@ -52,6 +64,10 @@ form {
 .list {
 	display: inline-block;
 	margin-left: 450px;
+}
+
+.globalList {
+	color: #ca3c3c;
 }
 
 #nav {
