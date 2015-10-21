@@ -14,21 +14,17 @@ h1 {
 
 ul {
 	list-style-type: square;
+	color:white;
 }
 
 p{
 	color:white;
 }
 
-ul {
-	color:white;
-
-
 a {
   color: #00B7FF;
 }
 
-<<<<<<< HEAD
 .logout {
    background: rgb(66, 184, 221);
 
@@ -47,9 +43,6 @@ form {
 #my-list button {
 	display: none;
 }
-=======
-
->>>>>>> 147dd2c9ce6af6a024abf357976c594fe4ccb0ac
 
 #nav {
      width: 100%;
