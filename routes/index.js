@@ -3,6 +3,7 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var Account = require('../app/models/account');
 var Instrument = require('../app/models/instrument');
+var Userlist = require('../app/models/userlist');
 var router = express.Router();
 
 
@@ -56,27 +57,26 @@ router.get('/logout', function (req, res) {
 
 
 router.get('/usercreationlist', function(req, res) {
-	res.render('userlist');
+	res.render('usercreationlist');
 })
 
 // create a route for post ajax 
 router.post('/usercreationlist', function(req, res) {
-	console.log(req.body);
+
 	var userlist = req.body.userlist;
+	var listsplit = userlist.split(',');
+	console.log(listsplit);
 
-	var insertDocument = function(db, callback) {
-		db.collection('accounts').insertOne( {
-			userlist : userlist
-    	})
-	}
 
-	MongoClient.connect(url, function(err, db) {
-	  assert.equal(null, err);
-	  insertDocument(db, function() {
-	      db.close();
-	  });
-	});
+	var newUserlist = Userlist ({
+		listsplit: listsplit
+	})
+
+	newUserlist.save(function(err) {
+		if (err) console.log(err);
+
+	res.redirect('usercreationlist');
+	})
 });
-
 
 module.exports = router;

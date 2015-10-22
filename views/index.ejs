@@ -28,7 +28,7 @@
     		<a href="/logout">Logout</a>
 
 			<% instruments.forEach( function( instrument ) { %>
-    			<li class="globalList"><%= instrument.type %><%= instrument.model %><button class="add">add to user list</button></li>
+    			<li class="globalList"><%= instrument.type %> <%= instrument.model %><button class="add">add to user list</button></li>
     		<% }); %>
     	<% } %>
     </div>
@@ -55,11 +55,6 @@
 			$('.add').on('click', function() {
 				$(this).parent().removeClass("globalList").addClass("personalList");
 	        	$(this).parent().appendTo("#my-list");
-	        	// $(this).parent().appendTo("#push-it-real-good");
-	        	// var pushit = $("#push-it-real-good").val();
-	        	// console.log(pushit)
-
-
 	        	$(this).remove();
 	    	});
 	    });
