@@ -52,7 +52,7 @@
   		<span class="show_array"></span>
   <% } %>
       </div>
-
+  <% if (user) { %>
     <div class="col-md-6">
 		<h4>My personal list</h4>
 		<ul id="my-list">
@@ -65,6 +65,7 @@
 		</form>
 
 		<span class="show_array"></span>
+  <% } %>  
     </div>
 
      <script src='http://code.jquery.com/jquery.js'></script>
