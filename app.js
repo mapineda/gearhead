@@ -37,6 +37,9 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/instruments', instruments);
 
+// app get
+// app.get( '/destroy/:id', routes.destroy );
+
 // passport config
 var Account = require('./app/models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
@@ -44,8 +47,8 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
 // mongoose connection for database (replace with MONGO_CONNECT once working)
-mongoose.connect("mongodb://jortron:qazwsxedc@ds041144.mongolab.com:41144/gearheads"); //connect to our database
-
+// mongoose.connect("mongodb://jortron:qazwsxedc@ds041144.mongolab.com:41144/gearheads"); //connect to our database
+mongoose.connect(process.env.MONGO_DB_CONN_GEARHEAD);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
