@@ -38,6 +38,10 @@ a {
 
 }
 
+.logo {
+	margin-left: 10px;
+}
+
 .body_div {
 	padding: 50px;
 }
