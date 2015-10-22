@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 
 var userlistSchema = new mongoose.Schema({
-	userlist: String
+	userlist: Array,
+	user: String
 });
 
 var Userlist = mongoose.model('Userlist', userlistSchema);
