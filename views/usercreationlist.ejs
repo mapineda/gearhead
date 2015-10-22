@@ -3,25 +3,14 @@
     <header>
         <% include ../views/partials/header %>
     </header>
-    <style>
-	h6 {
-		color: white;
-	}
-
-	button {
-		color: black;
-	}
-    </style>
 
 <body>
 
 	<h1>This is the userlist page</h1>
 
 	<% userlists.forEach( function(userlist) { %>
-		<% userlist.userlist.forEach(function(gear) { %>
-			<h6 class="list-item"><%= gear %><button>Check-In</button> <button>Check-Out</button></h6>
-		<% }); %>
-    <% }); %>
+		<h6 class="globalList"><%= userlist %></h6>s
+	<% }); %>
 
 </body>
 </html>

@@ -87,12 +87,55 @@
       <input id="push-it-real-good" type="hidden" name="gearlisty">
     </form>
 
-    	<span class="show_array"></span>
+    <span class="show_array"></span>
     </div>
     <% } %>
 
      <script src='http://code.jquery.com/jquery.js'></script>
      <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
+
+   <script>
+     $(function() {
+      $('.add').on('click', function() {
+        $(this).parent().removeClass("globalList").addClass("personalList");
+            $(this).parent().appendTo("#my-list");
+            $(this).remove();
+        });
+      });
+   </script>
+
+  <script>
+    $(function() {
+      $('.finalize').on('click', function() {
+
+          //declare an array
+        var myGearList = new Array();
+        $(".show_array").html(' ');
+
+        $('.personalList').each(function(){
+            myGearList.push($(this).text());
+          });
+
+          myGearList = myGearList.toString();
+
+          $.ajax({
+	         type: 'POST',
+	         url: '/usercreationlist',
+	         data: { userlist: myGearList },
+	        success: function(data){
+	         	console.log("done");
+	        	window.location.href = "/usercreationlist";
+	        },
+	        error: function() {
+	        	console.log("error");
+	        },
+	        complete: function() {
+				console.log("complete");
+	        }
+        });
+      });
+    });
+  </script> 
 
   </div>
   </body>
