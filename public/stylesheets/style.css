@@ -12,6 +12,14 @@ h1 {
 	color: #42b8dd;
 }
 
+h3 {
+	color: #009241 ;
+}
+
+h4 {
+	color: #f6c401;
+}
+
 ul {
 	list-style-type: square;
 	color:white;
@@ -30,6 +38,10 @@ a {
 
 }
 
+.body_div {
+	padding: 50px;
+}
+
 #logreg {
 	position: absolute;
 	right: 10px;
@@ -42,6 +54,20 @@ form {
 }
 #my-list button {
 	display: none;
+}
+
+.page_copy {
+    text-align: center;
+	vertical-align: middle;
+}
+
+.list {
+	display: inline-block;
+	margin-left: 450px;
+}
+
+.globalList {
+	color: #ca3c3c;
 }
 
 #nav {
