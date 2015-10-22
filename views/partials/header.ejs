@@ -10,6 +10,7 @@
 <!-- jQuery (load from a CDN) -->
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
+
 <style>
 
 #main {
@@ -24,17 +25,19 @@ footer {
 </style>
 </head>
 <div class="navbar navbar-inverse navbar-fixed-top" id="nav">
-<a href="#" class="pull-left"><img src="images/logo_small.gif" class="logo"></a>
-<% if (!user) { %>
-	<div id="logreg">
-		<form action="/register">
-		    <input type="submit" value="Register" class="logout">
-		</form>
-		<form action="/login">
-		    <input type="submit" value="Log In" class="logout">
-		</form>
-	</div>
-<% } %>
+	<div class="logo">
+		<a href="#" class="pull-left"><img src="images/logo_small.gif" class="logo"></a>
+	</div>	
+		<% if (!user) { %>
+			<div id="logreg">
+				<form action="/register">
+				    <input type="submit" value="Register" class="logout">
+				</form>
+				<form action="/login">
+				    <input type="submit" value="Log In" class="logout">
+				</form>
+			</div>
+		<% } %>
 
 <% if (user) { %>
 	<div id="logreg">
@@ -43,6 +46,6 @@ footer {
 		</form>
 	</div>
 <% } %>	
-
+</div>
 <body>
 <div id="main">

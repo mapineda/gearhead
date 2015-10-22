@@ -38,6 +38,10 @@ a {
 
 }
 
+.logo {
+	margin-left: 10px;
+}
+
 .body_div {
 	padding: 50px;
 }
@@ -72,7 +76,7 @@ form {
 
 #nav {
      width: 100%;
-     position: absolute;
+     position: fixed;
      margin-bottom: 70px;
      top: 0;  
      }
