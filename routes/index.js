@@ -57,8 +57,20 @@ router.get('/logout', function (req, res) {
 
 
 router.get('/usercreationlist', function(req, res) {
-	res.render('usercreationlist');
+	Userlist.find({ userId : req.user._id }, function(err, data) {
+		console.log("userlists", data);
+		res.render('usercreationlist', { userlists : data });
+	});
 })
+
+// remove todo item by its id
+exports.destroy = function ( req, res ){
+  Todo.findById( req.params.id, function ( err, todo ){
+    todo.remove( function ( err, todo ){
+      res.redirect( '/' );
+    });
+  });
+};
 
 // create a route for post ajax 
 router.post('/usercreationlist', function(req, res) {
@@ -69,18 +81,16 @@ router.post('/usercreationlist', function(req, res) {
 	var listsplit = userlist.split(',');
 	console.log(listsplit);
 
-
 	var newUserlist = new Userlist ({
 		userlist: listsplit,
-		user : user
+		userId : user._id
 	})
 
 	console.log(user);
 
 	newUserlist.save(function(err) {
 		if (err) console.log(err);
-
-	// res.redirect('usercreationlist');
+		res.send("hello");
 	})
 });
 

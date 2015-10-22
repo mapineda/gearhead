@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <% include ../views/partials/header %>
+    </header>
+
+<body>
+
+	<h1>This is the userlist page</h1>
+
+	<% userlists.forEach( function(userlist) { %>
+		<h6 class="globalList"><%= userlist %></h6>s
+	<% }); %>
+
+</body>
+</html>
