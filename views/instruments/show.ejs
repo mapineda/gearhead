@@ -2,3 +2,16 @@
 <h2>New Instrument</h2>
 <h3><%= model %></h3>
 <p><%= type %></p>
+
+
+  // add a delete link in the loop
+<% todos.forEach( function ( todo ){ %>
+  <p>
+    <span>
+      <%= todo.content %>
+    </span>
+    <span>
+      <a href="/destroy/<%= todo._id %>" title="Delete this todo item">Delete</a>
+    </span>
+  </p>
+<% }); %>
