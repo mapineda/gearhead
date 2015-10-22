@@ -62,20 +62,25 @@ router.get('/usercreationlist', function(req, res) {
 
 // create a route for post ajax 
 router.post('/usercreationlist', function(req, res) {
+	var user = req.user;
+	var objtest = req.body;
 
 	var userlist = req.body.userlist;
 	var listsplit = userlist.split(',');
 	console.log(listsplit);
 
 
-	var newUserlist = Userlist ({
-		listsplit: listsplit
+	var newUserlist = new Userlist ({
+		userlist: listsplit,
+		user : user
 	})
+
+	console.log(user);
 
 	newUserlist.save(function(err) {
 		if (err) console.log(err);
 
-	res.redirect('usercreationlist');
+	// res.redirect('usercreationlist');
 	})
 });
 
