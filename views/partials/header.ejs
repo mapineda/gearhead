@@ -28,7 +28,7 @@ footer {
 	<div class="logo">
 		<a href="#" class="pull-left"><img src="images/logo_small.gif" class="logo"></a>
 	</div>	
-		<% if (!user) { %>
+		<% if (!locals.user) { %>
 			<div id="logreg">
 				<form action="/register">
 				    <input type="submit" value="Register" class="logout">
@@ -39,7 +39,7 @@ footer {
 			</div>
 		<% } %>
 
-<% if (user) { %>
+<% if (locals.user) { %>
 	<div id="logreg">
 		<form action="/logout">
 		    <input type="submit" value="Log Out" class="logout">

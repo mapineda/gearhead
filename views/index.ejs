@@ -25,48 +25,36 @@
           <p>You can monitor the date/time your gear is checked into the venue location and when it is loaded back on the truck. </p><br>
           <p>You can also note the condition of the equipment at any time.</p>
         </div>    
-      <% } %>
+      <% }  %>
      
 
     <div class="col-md-6">
         <% if (user) { %>
         <h1>Step 1</h1>
         <h3>Select your instruments</h3>
-          <p>You are currently logged in as <%= user.username %></p>
+        <p>You are currently logged in as <%= user.username %></p>
           
 
         <% instruments.forEach( function( instrument ) { %>
-            <h6 class="globalList"><%= instrument.type %> <%= instrument.model %> <button class="add">add to user list</button></h6>
-          <% }); %>
-
+        	<h6 class="globalList"><%= instrument.type %> <%= instrument.model %> <button class="add">add to user list</button></h6>
+        <% }); %>
     </div>
+    
     <h1>Step 2</h1>
     <h3>Submit you list</h3>
-    <!--   <div class="col-md-6">
-      <h4>My personal list</h4>
-      <ul id="my-list">
-      </ul>
-      <button class="finalize">Submit List</button>
-
-      <br>
-      <span class="show_array"></span>
-  <% } %>
-
-      </div> -->
-      </div>
-
+    
     <div class="col-md-6">
     <!--   ADD MY LIST TO TABLE -->
        <table class="table table-hover table-bordered">
-    <thead class="thead-inverse">
+    	<thead class="thead-inverse">
           <tr>
             <th>#</th>
             <th>Type</th>
             <th>Model</th>
             <th>Issues</th>
           </tr>
-    </thead>
-    <tbody>
+    	</thead>
+   		 <tbody>
           <tr>
             <th scope="row">1</th>
             <td id="my-list"></td>
@@ -85,8 +73,8 @@
             <td>the Bird</td>
             <td>@twitter</td>
           </tr>
-   </tbody>
-  </table> 
+   		</tbody>
+  		</table> 
 
 
     <h4>My personal list</h4>
@@ -101,6 +89,7 @@
 
     <span class="show_array"></span>
     </div>
+    <% } %>
 
      <script src='http://code.jquery.com/jquery.js'></script>
      <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
@@ -130,13 +119,19 @@
           myGearList = myGearList.toString();
 
           $.ajax({
-          type: 'POST',
-          url: '/usercreationlist',
-          data: { userlist: myGearList
-          },
-          done: function(data){
-            console.log(data)
-          }
+	         type: 'POST',
+	         url: '/usercreationlist',
+	         data: { userlist: myGearList },
+	        success: function(data){
+	         	console.log("done");
+	        	window.location.href = "/usercreationlist";
+	        },
+	        error: function() {
+	        	console.log("error");
+	        },
+	        complete: function() {
+				console.log("complete");
+	        }
         });
       });
     });
