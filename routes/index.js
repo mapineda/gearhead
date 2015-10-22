@@ -3,8 +3,8 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var Account = require('../app/models/account');
 var Instrument = require('../app/models/instrument');
+var Userlist = require('../app/models/userlist');
 var router = express.Router();
-
 
 
 router.get('/', function (req, res) {
@@ -24,9 +24,11 @@ router.get('/', function (req, res) {
     instrument();
 });
 
+
 router.get('/register', function (req, res) {
     res.render('register', { });
 });
+
 
 router.post('/register', function (req, res) {
     Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
@@ -54,10 +56,27 @@ router.get('/logout', function (req, res) {
 });
 
 
-// create a route for post ajax 
-router.post('/usercreationlist', function(req, res) {
-	res.render('userlist', { user: req.user });
+router.get('/usercreationlist', function(req, res) {
+	res.render('usercreationlist');
 })
 
+// create a route for post ajax 
+router.post('/usercreationlist', function(req, res) {
+
+	var userlist = req.body.userlist;
+	var listsplit = userlist.split(',');
+	console.log(listsplit);
+
+
+	var newUserlist = Userlist ({
+		listsplit: listsplit
+	})
+
+	newUserlist.save(function(err) {
+		if (err) console.log(err);
+
+	res.redirect('usercreationlist');
+	})
+});
 
 module.exports = router;
