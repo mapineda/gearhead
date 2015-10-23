@@ -7,6 +7,8 @@
 
 <body>
 
+	<% if (user) { %>
+
 	<h1>User List 1</h1>
 
 	<div class="container">
@@ -20,11 +22,22 @@
 			  <div class="emoji"></div>
 			  <label for="toggle2" class="well"></label>
 			</div>
+			<button class="btn btn-danger userlistdelete">Remove</button>
 		</div>
 		<% }); %>
     <% }); %>
+
+    <% }; %>
+
 </div>
-	
+
+	<script>
+     $(function() {
+      $('.userlistdelete').on('click', function() {
+            $(this).parent().remove();
+       });
+     });
+   </script>
 
 </body>
 </html>
