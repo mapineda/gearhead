@@ -34,7 +34,7 @@
 	<script>
      $(function() {
       $('.userlistdelete').on('click', function() {
-            $(this).parent().remove();
+            $(this).parent().fadeOut(600, function() { $(this).remove();});
        });
      });
    </script>
