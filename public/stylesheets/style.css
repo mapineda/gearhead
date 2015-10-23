@@ -21,7 +21,7 @@ h4 {
 }
 
 ul {
-	list-style-type: square;
+	list-style-type: none;
 	color:white;
 }
 
@@ -52,6 +52,12 @@ a {
 	bottom: 10px;
 
 }
+
+#userlistpad {
+	margin-top: 20px;
+	padding-top: 20px;
+}
+
 
 form {
 	display: inline;
