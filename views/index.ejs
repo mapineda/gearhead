@@ -12,13 +12,13 @@
           <p>A mobile/tablet/laptop-friendly app that will track all your gear for every gig.</p>
         </div>  
         
-        <div class="list">  
-          <ul>
+        
+          <ul class="pull-center">
             <li class="li">Create an account.</li>
             <li>Create a gear list.</li>
             <li>Add you tour dates and venue details.</li>
           </ul><br>
-        </div>
+  
 
         <div class="page_copy">
           <p>We created a fully responsive inventory tracking app. </p>
@@ -41,17 +41,16 @@
     </div>
     
     <h1>Step 2</h1>
-    <h3>Submit you list</h3>
+    <h3>Submit your list</h3>
     
     <div class="col-md-6">
     <!--   ADD MY LIST TO TABLE -->
-       <table class="table table-hover table-bordered">
+       <table class="table table-hover table-condensed">
     	<thead class="thead-inverse">
           <tr>
             <th>#</th>
             <th>Type</th>
             <th>Model</th>
-            <th>Issues</th>
           </tr>
     	</thead>
    		 <tbody>
@@ -59,19 +58,19 @@
             <th scope="row">1</th>
             <td id="my-list"></td>
             <td></td>
-            <td>@mdo</td>
+            
           </tr>
           <tr>
             <th scope="row">2</th>
             <td></td>
             <td></td>
-            <td>@fat</td>
+            
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+            <td></td>
+            <td></td>
+           
           </tr>
    		</tbody>
   		</table> 
@@ -87,12 +86,55 @@
       <input id="push-it-real-good" type="hidden" name="gearlisty">
     </form>
 
-    	<span class="show_array"></span>
+    <span class="show_array"></span>
     </div>
     <% } %>
 
      <script src='http://code.jquery.com/jquery.js'></script>
      <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
+
+   <script>
+     $(function() {
+      $('.add').on('click', function() {
+        $(this).parent().removeClass("globalList").addClass("personalList");
+            $(this).parent().appendTo("#my-list");
+            $(this).remove();
+        });
+      });
+   </script>
+
+  <script>
+    $(function() {
+      $('.finalize').on('click', function() {
+
+          //declare an array
+        var myGearList = new Array();
+        $(".show_array").html(' ');
+
+        $('.personalList').each(function(){
+            myGearList.push($(this).text());
+          });
+
+          myGearList = myGearList.toString();
+
+          $.ajax({
+	         type: 'POST',
+	         url: '/usercreationlist',
+	         data: { userlist: myGearList },
+	        success: function(data){
+	         	console.log("done");
+	        	window.location.href = "/usercreationlist";
+	        },
+	        error: function() {
+	        	console.log("error");
+	        },
+	        complete: function() {
+				console.log("complete");
+	        }
+        });
+      });
+    });
+  </script> 
 
   </div>
   </body>
