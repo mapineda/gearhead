@@ -2,15 +2,29 @@
 <html>
     <header>
         <% include ../views/partials/header %>
+        <link rel='stylesheet' href='/stylesheets/emoji.css' />
     </header>
 
 <body>
 
-	<h1>This is the userlist page</h1>
+	<h1>User List 1</h1>
 
+	<div class="container">
 	<% userlists.forEach( function(userlist) { %>
-		<h6 class="globalList"><%= userlist %></h6>s
-	<% }); %>
+		<% userlist.userlist.forEach(function(gear) { %>
+		<div class="col-md-4">
+			<h4 class="list-item"><%= gear %></h4>
+			<br>
+			<div class="emoji-toggle emoji-travel">
+			  <input type="checkbox" id="toggle2" class="toggle">
+			  <div class="emoji"></div>
+			  <label for="toggle2" class="well"></label>
+			</div>
+		</div>
+		<% }); %>
+    <% }); %>
+</div>
+	
 
 </body>
 </html>
