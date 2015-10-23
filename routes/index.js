@@ -58,8 +58,9 @@ router.get('/logout', function (req, res) {
 
 router.get('/usercreationlist', function(req, res) {
 	Userlist.find({ userId : req.user._id }, function(err, data) {
+		var user = req.user;
 		console.log("userlists", data);
-		res.render('usercreationlist', { userlists : data });
+		res.render('usercreationlist', { userlists : data, user : req.user});
 	});
 })
 
