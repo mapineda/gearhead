@@ -89,3 +89,12 @@ form {
 	border-radius: 4px;
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
+
+.col-md-6 {
+	color: #42b8dd;
+
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #E0E0EA;
+}
